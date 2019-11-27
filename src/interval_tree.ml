@@ -96,7 +96,7 @@ let contains interval x_mid =
 
 let bounds_array_of_intervals intervals =
   let n   = L.length intervals  in
-  let res = A.create (2 * n) 0. in
+  let res = A.make (2 * n) 0. in
   let i   = ref 0               in
   L.iter
     (fun interval ->

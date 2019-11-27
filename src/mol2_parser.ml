@@ -27,6 +27,7 @@ module BL = BatList
 module BS = BatString
 module F  = Filename
 module L  = List
+module Log = Dolog.Log
 module MU = My_utils
 module S  = String
 
@@ -118,7 +119,7 @@ let read_mol2_file f =
 let explode input_f =
   let molecules = read_mol2_file   input_f in
   let out_dir   = F.chop_extension input_f in
-  Log.info (lazy (sprintf "molecules in %s: %d" input_f (L.length molecules)));
+  Log.info "molecules in %s: %d" input_f (L.length molecules);
   BL.mapi
     (fun j (m, m_name) ->
       let new_dir  = sprintf "%s_%07d" out_dir (j+1) in

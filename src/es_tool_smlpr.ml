@@ -187,23 +187,23 @@ let main () =
          let ligand_surface =
            dump_thick_surface_mask verbose surface_thickness pqr_B ms_r_B in
          (* CORRELATION #################################################### *)
-         Log.info (lazy ("preparing mask..."));
+         Log.info "preparing mask...";
          let mask = Dx.masks_op [receptor_surface; ligand_surface] (&&) in
-         Log.info (lazy ("parsing dx files..."));
+         Log.info "parsing dx files...";
          let dx_r_2 = ref (Dx.parse_dx_file false dx_out_B) in
          (if verbose then
              MU.filename_with_different_extension
                pdb_B' ".mol2" ".final_mask.pdb" |> Dx.mask_to_pdb mask dx_r_2);
-         Log.info (lazy ("correlating..."));
+         Log.info "correlating...";
          let corr_scores = Dx.map_correl dx_r_1 dx_r_2 mask in
-         P.printf "%s %s mol: %s\n"
+         P.printf "%s %s mol: %s\n%!"
            dx_out_B
            (sprintf_corr_scores corr_scores)
            m_name;
          (* delete ligand molecule dx file after use to save space *)
          (if not keep_dx
           then Sys.remove dx_out_B)
-       with MU.Command_failed msg -> Log.warn (lazy msg))
+      with MU.Command_failed msg -> Log.warn "%s" msg)
     (* molecules *)
     (Parmap.L molecules)
 ;;

@@ -19,6 +19,7 @@
 
 module A    = Array
 module L    = List
+module Log = Dolog.Log
 module Mol2 = Mol2_parser
 module P    = Printf
 
@@ -35,9 +36,9 @@ let main () =
      exit 1)
   else
     let new_files = Mol2.explode Sys.argv.(1) in
-    Log.info (lazy "Files created:");
+    Log.info "Files created:";
     L.iter
-      (fun (fn, _m_name) -> Log.info (lazy fn))
+      (fun (fn, _m_name) -> Log.info "%s" fn)
       new_files
 ;;
 

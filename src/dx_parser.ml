@@ -24,6 +24,7 @@ module BS   = BatString
 module ISet = My_utils.IntSet
 module ITV  = Interval_tree
 module L    = List
+module Log = Dolog.Log
 module MU   = My_utils
 module PDB  = Pdb_parser
 module Pqr  = Pqr
@@ -185,14 +186,14 @@ let process_parsed_line state_r l =
       !state_r.nbx <- nbx;
       !state_r.nby <- nby;
       !state_r.nbz <- nbz;
-      Log.info (lazy (sprintf "nbx nby nbz nbxyz: %d %d %d %d"
-                        nbx nby nbz (nbx * nby * nbz)))
+      Log.info "nbx nby nbz nbxyz: %d %d %d %d"
+        nbx nby nbz (nbx * nby * nbz)
   | Origin v3 ->
       let ox, oy, oz = V3.to_triplet v3 in
       !state_r.ox <- ox;
       !state_r.oy <- oy;
       !state_r.oz <- oz;
-      Log.info (lazy (sprintf "origin: %s" (V3.to_string v3)))
+      Log.info "origin: %s" (V3.to_string v3)
   | Deltas (dx, dy, dz) ->
       if dx = 0.0 then
         if dy = 0.0 then
@@ -200,19 +201,19 @@ let process_parsed_line state_r l =
             failwith "dx dy dz all 0.0"
           else
             (!state_r.dz <- dz;
-             Log.info (lazy (sprintf "dz: %f" dz)))
+             Log.info "dz: %f" dz)
         else
           (!state_r.dy <- dy;
-           Log.info (lazy (sprintf "dy: %f" dy)))
+           Log.info "dy: %f" dy)
       else
         (!state_r.dx <- dx;
-         Log.info (lazy (sprintf "dx: %f" dx)))
+         Log.info "dx: %f" dx)
   | Nb_values k ->
       !state_r.nbxyz <- k;
       if k <> !state_r.nbx * !state_r.nby * !state_r.nbz then
         failwith "dx parser state error: nbx nby nbz <> nbxyz"
       else
-        (Log.info (lazy (sprintf "values: %d" k));
+        (Log.info "values: %d" k;
          !state_r.charges <- A.make k 0.)
 
 let process_value_line verbose state_r l =

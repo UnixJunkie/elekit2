@@ -135,15 +135,15 @@ let average_a a = (sum_a a) /. (float_of_int (A.length a))
 (* minimum of a float array *)
 let min_a a =
   A.fold_left
-    Pervasives.min      (* a fun   *)
-    Pervasives.infinity (* a value *)
+    min      (* a fun   *)
+    infinity (* a value *)
     a
 
 (* maximum of a float array *)
 let max_a a =
   A.fold_left
-    Pervasives.max          (* a fun   *)
-    Pervasives.neg_infinity (* a value *)
+    max          (* a fun   *)
+    neg_infinity (* a value *)
     a
 
 (* ============================== Lists ============================== *)
@@ -331,7 +331,7 @@ let iter_on_some_elements p f l =
 module IntSet =
   Set.Make
     (struct
-      let compare = Pervasives.compare
+      let compare = compare
       type t = int
     end)
 
@@ -521,7 +521,7 @@ let pearson_a a1 a2 =
 let spearman_rank arr =
   let arr = Array.copy arr in
   let arr = Array.mapi (fun i a -> a,i) arr in
-  Array.sort (fun (a,_) (b,_) -> Pervasives.compare a b) arr;
+  Array.sort (fun (a,_) (b,_) -> compare a b) arr;
   let g _prev il ans =
     let count = List.length il in
     let n = count + (List.length ans) in
@@ -541,7 +541,7 @@ let spearman_rank arr =
   in
   let prev,il,ans = Array.fold_left f (0.,[],[]) arr in
   let ans = g prev il ans in
-  let ans = List.sort (fun (_,a) (_,b) -> Pervasives.compare a b) ans in
+  let ans = List.sort (fun (_,a) (_,b) -> compare a b) ans in
   Array.of_list (List.map fst ans)
 
 (* Spearman rank-order correlation coefficient *)

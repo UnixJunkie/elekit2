@@ -21,6 +21,7 @@ module BS  = BatString
 module BL  = BatList
 module Dx  = Dx_parser
 module F   = Filename
+module Log = Dolog.Log
 module MU  = My_utils
 module Opt = BatOption
 module P   = Printf
@@ -78,9 +79,9 @@ let dump_thick_surface_mask
   result
 
 let print_apbs_dot_in_file f =
-  Log.info (lazy "---");
-  MU.iter_on_lines_of_file (fun l -> Log.info (lazy l)) f;
-  Log.info (lazy "---")
+  Log.info "---";
+  MU.iter_on_lines_of_file (Log.info "%s") f;
+  Log.info "---"
 
 let correct_apbs_input_file new_center maybe_pdie maybe_sdie
                             dot_pqr_in dot_in_in dot_in_out dx_out =

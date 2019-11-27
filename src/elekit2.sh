@@ -5,7 +5,7 @@ set -u
 set -e
 
 # <user configurable area>
-HERE=/localhome/berenger/src/EleKit2_released/src
+HERE=/home/berenger/src/EleKit2/src
 # </user configurable area>
 
 export APBS=$HERE/../ext/apbs-1.3-src/bin/apbs

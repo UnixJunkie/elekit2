@@ -1,0 +1,4 @@
+TESTRESULTS.log: PASSED within error (8.083540155785E+00; expected apbs-mol-vdw.in; 0% error)
+TESTRESULTS.log: PASSED within error (2.096296139195E+01; expected apbs-smol-vdw.in; 0% error)
+TESTRESULTS.log: PASSED within error (1.192608095265E+02; expected apbs-mol-surf.in; 0% error)
+TESTRESULTS.log: PASSED within error (1.088748102540E+02; expected apbs-smol-surf.in; 0% error)

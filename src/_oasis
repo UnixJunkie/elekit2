@@ -1,0 +1,20 @@
+OASISFormat: 0.3
+Name: EleKit
+Version: 2.0
+Synopsis: The Electrostatic Kit
+Authors: Francois Berenger
+License: LGPL-3
+Plugins: META (0.3), DevFiles (0.3)
+
+BuildDepends: batteries, parmap, vector3, dolog
+BuildTools: ocamlbuild
+
+Executable es_tool_smlpr
+  Path: .
+  CompiledObject: best
+  MainIs: es_tool_smlpr.ml
+
+Executable mol2_tool
+  Path: .
+  CompiledObject: best
+  MainIs: mol2_tool.ml

@@ -1,0 +1,4 @@
+TESTRESULTS.log: PASSED within error (1.559159533685E+01; expected apbs-mol-pdiel2.in; 0% error)
+TESTRESULTS.log: PASSED within error (2.355542126580E+01; expected apbs-smol-pdiel2.in; 0% error)
+TESTRESULTS.log: PASSED within error (1.802722643122E+01; expected apbs-mol-pdiel12.in; 0% error)
+TESTRESULTS.log: PASSED within error (1.928245019838E+01; expected apbs-smol-pdiel12.in; 0% error)

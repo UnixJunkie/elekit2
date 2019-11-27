@@ -1,0 +1,30 @@
+# OASIS_START
+# DO NOT EDIT (digest: 243cd6d467df5287a9ddc0e2c8462f9c)
+# Ignore VCS directories, you can use the same kind of rule outside
+# OASIS_START/STOP if you want to exclude directories that contains
+# useless stuff for the build process
+<**/.svn>: -traverse
+<**/.svn>: not_hygienic
+".bzr": -traverse
+".bzr": not_hygienic
+".hg": -traverse
+".hg": not_hygienic
+".git": -traverse
+".git": not_hygienic
+"_darcs": -traverse
+"_darcs": not_hygienic
+# Executable es_tool_smlpr
+<es_tool_smlpr.{native,byte}>: pkg_batteries
+<es_tool_smlpr.{native,byte}>: pkg_dolog
+<es_tool_smlpr.{native,byte}>: pkg_parmap
+<es_tool_smlpr.{native,byte}>: pkg_vector3
+# Executable mol2_tool
+<mol2_tool.{native,byte}>: pkg_batteries
+<mol2_tool.{native,byte}>: pkg_dolog
+<mol2_tool.{native,byte}>: pkg_parmap
+<mol2_tool.{native,byte}>: pkg_vector3
+<*.ml{,i}>: pkg_batteries
+<*.ml{,i}>: pkg_dolog
+<*.ml{,i}>: pkg_parmap
+<*.ml{,i}>: pkg_vector3
+# OASIS_STOP

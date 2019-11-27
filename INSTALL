@@ -1,0 +1,49 @@
+# EleKit 2.0 - a tool to compute the electrostatic complementarity between
+#              a small ligand molecule and a protein receptor over some 3D
+#              region
+#
+# Please cite the corresponding article if you use this software
+
+# the software was run and developped on CentOS release 6.4
+
+# COMPILATION #######################################################
+
+# pdb2pqr 1.8 (external dependency)
+cd ext/pdb2pqr-1.8-src
+./install.sh # EDIT THIS SCRIPT IF NEEDED
+
+# apbs 1.3 (external dependency)
+cd ../../
+cd ext/apbs-1.3-src
+./install.sh
+
+# EleKit 2
+
+# you need OCaml and OPAM installed, cf.
+# http://ocaml.org
+# http://opam.ocaml.org
+
+cd ../../
+cd src
+eval `opam config env`
+opam install oasis batteries parmap vector3 dolog
+./build.sh
+
+# USAGE #############################################################
+
+# EDIT ./elekit2.sh, update the HERE variable to reflect your installation
+
+./elekit2.sh # for help
+
+# running example
+./elekit2.sh -rec 2b4j-receptor.pdb -lig ledgin1.mol2 -sdie 2.0 -surf 0.5 -v
+
+# for curious users who want to inspect the system under study
+pymol 2b4j-receptor.pdb ledgin1.mol2 ledgin1_0000001/0000001.final_mask.pdb
+
+# Do not hesitate to contact the authors for any help.
+#
+# Francois Berenger,
+# Xiao Yin Lee,
+# Arnout Voet,
+# Kam Y. J. Zhang
